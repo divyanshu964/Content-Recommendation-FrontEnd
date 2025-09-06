@@ -6,13 +6,13 @@ import { AnimatePresence, motion } from "framer-motion";
 
 const App: React.FC = () => {
   const [results, setResults] = useState<MovieItem[]>([]);
-  const { current, swipeHandlers, accepted } = useRecommendations(results);
+  const { current, swipeHandlers, _accepted } = useRecommendations(results);
 
   // Fetch movie recommendations from backend
   const fetchRecommendations = async (query: string) => {
     try {
       const response = await fetch(
-        "https://nodejs-production-0625.up.railway.app/webhook-test", // replace with actual deployed backend URL
+        "https://nodejs-production-0625.up.railway.app/webhook/recommend", // replace with actual deployed backend URL
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
